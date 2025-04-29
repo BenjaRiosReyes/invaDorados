@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MU Online Golden Bosses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>MU Online Golden Bosses</h1>
+    <div class="grid-container">
+        {% for location, bosses in boss_locations.items() %}
+        <div class="box">
+            <h2>{{ location }}</h2>
+            {% for boss in bosses %}
+            <div class="boss-entry">
+                <p><strong>- {{ boss.name }}</strong></p>
+                <p>Place: <span class="highlight">{{ boss.place }}</span></p>
+                <p>Boxes: {{ boss.boxes | join(', ') if boss.boxes else "TBD" }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
